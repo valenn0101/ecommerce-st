@@ -24,7 +24,7 @@ Con la seccion de 'Ver' tengo que tomarme el tiempo de releer la documentacion d
 
 ## Deploy
 
-El deploy es en https://ecommerce-jolx7d65z-valenn0101.vercel.app/
+El deploy https://ecommerce-st.vercel.app/
     
 ## Funcionalidades
 
