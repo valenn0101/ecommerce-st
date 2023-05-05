@@ -7,7 +7,7 @@ export function useAuthentication() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { loading, error, data, sendPostRequest } = usePostRequest(
-    "https://story-dots-api.onrender.com/api/v1/crud/auth"
+    "https://story-dots-crud.onrender.com/api/v1/crud/auth"
   );
 
   const handleLogin = () => {
@@ -27,11 +27,17 @@ export function useAuthentication() {
   useEffect(() => {
     const handleData = () => {
       if (data) {
-        Cookies.set("sessionId", data.sessionId);
+        const sessionId = data.sessionId;
+        const cookieOptions = {
+          expires: 1, 
+          sameSite: "none",
+          secure: true,
+        };
+        Cookies.set("sessionId", sessionId, cookieOptions);
         window.location.href = "/home";
       }
     };
-
+  
     handleData();
   }, [data]);
 
