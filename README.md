@@ -1,6 +1,6 @@
 # CRUD Ecommerce
 
-Bienvenidos! Aqui una breve descripcion del backend de mi app
+Bienvenidos! Aqui una breve descripcion del frontend de mi app
 
 
 ## Aclaraciones
@@ -25,6 +25,9 @@ Con la seccion de 'Ver' tengo que tomarme el tiempo de releer la documentacion d
 ## Deploy
 
 El deploy https://ecommerce-st.vercel.app/
+
+usuario: admin
+contraseña: 1234
     
 ## Funcionalidades
 
