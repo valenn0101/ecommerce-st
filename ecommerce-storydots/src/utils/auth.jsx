@@ -7,7 +7,7 @@ export function useAuthentication() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { loading, error, data, sendPostRequest } = usePostRequest(
-    "https://story-dots-crud.onrender.com/api/v1/crud/auth"
+    "https://ecommerce-api-rest.onrender.com/api/v1/crud/auth"
   );
 
   const handleLogin = () => {
