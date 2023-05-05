@@ -1,16 +1,15 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import { fetchProducts } from "@/utils/fetchProducts";
+import { fetchBrands } from "@/utils/fetchBrands";
 import { fetchBrandInfo } from "@/utils/fetchOneBrand";
-import styles from "./Home.module.css";
+import styles from "./our-brands.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Loading from "@/components/Loading/Loading";
-import DeleteButton from "@/components/DeleteProduct/DeleteProduct";
+import DeleteButtonB from "@/components/DeleteBrand/DeleteBrand";
 
 function Home() {
   const [sessionIdExists, setSessionIdExists] = useState(false);
-  const [products, setProducts] = useState([]);
+  const [brands, setBrands] = useState([]);
   const [brandInfo, setBrandInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -19,13 +18,13 @@ function Home() {
     setSessionIdExists(hasSessionIdCookie);
 
     async function fetchData() {
-      const fetchedProducts = await fetchProducts();
-      if (fetchedProducts.length > 0) {
-        const brandId = fetchedProducts[0].brandId;
+      const fetchedBrands = await fetchBrands();
+      if (fetchedBrands.length > 0) {
+        const brandId = fetchedBrands[0].brandId;
         const brandInfo = await fetchBrandInfo(brandId);
         setBrandInfo(brandInfo);
       }
-      setProducts(fetchedProducts);
+      setBrands(fetchedBrands);
       setIsLoading(false);
     }
 
@@ -42,36 +41,36 @@ function Home() {
             <table className="table table-hover table-dark">
               <thead>
                 <tr>
+                  <th scope="col">ID</th>
                   <th scope="col">Image</th>
-                  <th scope="col">Product</th>
-                  <th scope="col">Price</th>
-                  <th scope="col">Brand</th>
+                  <th scope="col">Name</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {products.map((product) => (
-                  <tr key={product.id}>
+                {brands.map((brand) => (
+                  <tr key={brand.id}>
+                    <td>{brand.id}</td>
                     <td>
                       <img
-                        src={product.image_url}
+                        src={brand.logo_url}
                         alt="Product IMG"
                         className={styles.img}
                       />
                     </td>
-                    <td>{product.name}</td>
-                    <td>${product.price}</td>
-                    <td>{product.brand}</td>
+                    <td>{brand.name}</td>
                     <td>
                       <div
                         className="btn-group"
                         role="group"
                         aria-label="Basic outlined example"
                       >
-                        <Link href={`/one-product/${product.id}`}>
-                          <button className="btn btn-outline-primary">View</button>
-                        </Link>
-
+                        <button
+                          type="button"
+                          className="btn btn-outline-primary"
+                        >
+                          View
+                        </button>
                         <button
                           type="button"
                           className="btn btn-outline-info"
@@ -79,8 +78,9 @@ function Home() {
                         >
                           Edit
                         </button>
-                        <div>
-                          <DeleteButton id={product.id} />
+                        <div
+                        >
+                          <DeleteButtonB id={brand.id}/>
                         </div>
                       </div>
                     </td>
