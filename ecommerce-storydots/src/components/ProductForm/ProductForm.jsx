@@ -14,7 +14,9 @@ function ProductForm({ api, method }) {
   const [discounted, setDiscounted] = useState(false);
   const [discountPercentage, setDiscountPercentage] = useState("");
   const [stock, setStock] = useState("");
-  const [brandName, setBrandName] = useState("");
+  const [brandName, setBrandName] = useState(
+    brands.length > 0 ? brands[0].name : ""
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,9 +45,11 @@ function ProductForm({ api, method }) {
     } else if (name === "stock") {
       setStock(value);
     } else if (name === "brand") {
-      const selectedBrand = brands.find((brand) => brand.name === value);
-      const brandId = selectedBrand ? selectedBrand.id : "";
-      setBrandName(brandId);
+      const selectedBrand = brands.find(
+        (brand) => brand.name === event.target.value
+      );
+      const brandName = selectedBrand ? selectedBrand.name : "";
+      setBrandName(brandName);
     }
   };
 
