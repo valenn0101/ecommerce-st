@@ -16,6 +16,10 @@ export default function Header() {
     window.location.href = "/create-brand";
   };
 
+  const handleCreateProductClick = () => {
+    window.location.href = "/create-product"
+  }
+
   return (
     <div className={styles.header}>
       <h1><a className={styles.link} href="/home">Ecommerce APP</a></h1>
@@ -24,7 +28,7 @@ export default function Header() {
       </button>
       {isSessionOpen ? (
         <>
-          <button onClick={handleLogout} className="btn btn-success">
+          <button onClick={handleCreateProductClick} className="btn btn-success">
             Create new product
           </button>
           <button onClick={handleCreateBrandClick} className="btn btn-info">
