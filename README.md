@@ -1,9 +1,3 @@
-
-# CRUD Ecommerce
-
-Bienvenidos! Aqui una breve descripcion del backend de mi app
-
-
 # CRUD Ecommerce
 
 Bienvenidos! Aqui una breve descripcion del backend de mi app
